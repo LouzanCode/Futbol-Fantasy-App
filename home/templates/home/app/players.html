@@ -1,0 +1,40 @@
+{% extends "home/app/base.html" %}
+{% load static %}
+{% block title %}
+Jugadors
+{% endblock %}
+{% block content %}
+<div class="album py-5 bg-light">
+    <div class="container">
+
+      
+
+      <div class="pb-3 h5">Destacado</div>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
+
+        {% for player in players %}
+
+        <div class="col">
+          <div class="card shadow-sm">
+            <img class="img-fluid" alt="Responsive image" src="">
+            <div class="card-body">
+              <p class="card-text">
+                <a class="text-dark fw-bold" href="{{player.get_absolute_url}}">{{player.name}}</a>
+              </p>
+              <p class="card-text">
+                <span>Categoría:</span>
+                <a class="text-dark fw-bold" href="">{{product.position|title}}</a>
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                <small class="text-muted">{{player.goals}} </small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {% endfor %}
+
+      </div>
+    </div>
+  </div>
+  {% endblock %}

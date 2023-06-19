@@ -1,0 +1,16 @@
+{% extends 'tienda/base.html' %}
+
+{% block title %}Registro{% endblock %}
+{% block content %}
+{% load crispy_forms_tags %}
+<div class="container-fluid">
+<form method="POST" class="form-group">
+    {% csrf_token %}
+    {{form|crispy}}
+    <p>¿Ya tienes una cuenta? Inicia sesión <a href="/login">aquí.</a></p>
+    <button type="submit" class="btn btn-primary my-2" >Registrarse</button>
+   
+</form>
+</div>
+{% endblock  %}
+

@@ -1,0 +1,161 @@
+{% extends "home/app/base.html" %}
+{% load static %}
+{% block title %}Equipo{% endblock %}
+{% block content %}
+
+   <section class="line-up">
+      
+    <div class="flex-container" id="delantera">
+
+        <div class="caja">
+          Caja1
+        </div>
+        <div class="caja">
+          Caja2
+        </div>
+        <div class="caja">
+          Caja3
+        </div>
+    </div>
+    
+    
+
+    <div class="flex-container" id="mediocentro">
+        <div class="caja">
+          Caja1
+        </div>
+        <div class="caja">
+        Caja2
+        </div>
+        <div class="caja">
+         Caja3
+        </div>
+        <div class="caja">
+            Caja3
+           </div>
+    </div>
+
+    
+
+    <div class="flex-container" id="defensa">
+        <div class="caja">
+          Caja1
+        </div>
+        <div class="caja">
+         Caja2
+        </div>
+        <div class="caja">
+         Caja3
+        </div>
+      </div>  
+    
+     
+    
+    
+      <div class="flex-container" id="porteria">
+        <div class="caja">
+          Caja1
+        </div>
+     
+    </div>
+        
+</section>
+<div class="alineacion">
+    <button data-open-modal id="cambiar-once" class="btn btn-outline-success my-5 my-sm-0" type="submit">Formación </button>
+    <dialog data-modal>
+        <form method="dialog">
+        
+            <button onclick="cambiarAlineacion(3, 4 , 3)" >3-4-3</button>
+        
+            <button onclick="cambiarAlineacion(2, 5, 3)" >3-5-2</button>
+        
+            <button onclick="cambiarAlineacion(3, 3, 4)" >4-3-3</button>
+        
+            <button onclick="cambiarAlineacion(2, 3 , 5)" >5-3-2</button>
+        
+            <button onclick="cambiarAlineacion(1, 6 , 3)" >3-6-1</button>
+            
+        
+    </form>
+    </dialog>
+</div>
+
+
+   <table class="styled-table-equipo">
+    {% for player in players %}
+    <tr>
+      <td>{{player.name}}</td>
+   </tr>
+   {% endfor %}
+   </table>
+
+<script>
+    const openButton = document.querySelector("[data-open-modal]")
+    const closeButton = document.querySelector("[data-close-modal]")
+    const modal = document.querySelector("[data-modal]")
+
+    // Funcion para cambiar los div
+    function cambiarAlineacion(delantera, mediocentro, defensa){
+
+      console.log(delantera, mediocentro, defensa);
+      const zonas = ['delantera', 'mediocentro', 'defensa'];
+      const valores = [delantera, mediocentro, defensa];
+      
+      // RESETEO LOS DIVS 
+      const delanteraX = document.getElementById('delantera');
+      const mediocentroX = document.getElementById('mediocentro');
+      const defensaX = document.getElementById('defensa');
+      
+      const borrar = [delanteraX, mediocentroX, defensaX]
+
+      for (let x=0; x < borrar.length; x++){
+        while(borrar[x].firstChild){
+          borrar[x].removeChild(borrar[x].firstChild);
+        }
+      }
+      
+
+
+      
+      for(let i=0; i < zonas.length; i++){
+
+          const totalAdd = valores[i];
+
+          for(let j=0; j < totalAdd; j++){
+              // creamos los divs porque ya sabemos la zona[i] y el valor[j]
+              createDiv(zonas[i]);
+          }
+
+
+    }
+  }
+
+    function createDiv(containerId){
+      const container = document.getElementById(containerId);
+      const newDiv = document.createElement('div');
+
+      // TODO: RESETEAR EL CONTENEDOR
+      
+      newDiv.className = 'caja';
+      newDiv.textContent = 'Caja' + (container.children.length + 1);
+      container.appendChild(newDiv);
+
+    }
+
+    function removeDiv(containerId) {
+      const container = document.getElementById(containerId);
+      if(container.children.length > 0){
+        container.removeChild(container.lastChild);
+      }
+    }
+
+    openButton.addEventListener("click", () => {
+        modal.showModal()
+    })
+    closeButton.addEventListener("click", () => {
+        modal.close()
+    })
+   
+</script>
+
+{% endblock %}

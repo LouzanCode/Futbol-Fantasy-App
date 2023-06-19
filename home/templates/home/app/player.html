@@ -1,0 +1,95 @@
+{% extends "home/app/base.html" %}
+{% load static %}
+{% block title %}
+{{ player.name }}
+{% endblock %}
+{% block content %}
+<div class="container">
+    <main class="pt-5">
+        <div class="row g-3">
+            <div class="col-md-5 col-lg-5 order-md-first bg-light">
+                <img class="img-fluid mx-auto d-block" width="200px" alt="Responsive image" src=''>
+            </div>
+            <div class="col-md-7 col-lg-7 ps-md-3 ps-lg-5">
+                <h1 class="mb-0 h4">{{player.name}}</h1>
+                <p><span class="lead">{{player.team}}</span> </p>
+                <p>{{player.position}}</p>
+                <div class="border">
+                    <div class="col border-bottom">
+                        <div class="row p-3">
+                            <div class="col-6"><span class="h6 fw-bold">Nacionalidad: </span>{{player.nationality}}</div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="h6 fw-bold">Valor:</span>
+                                <small class="text-muted"> {{player.valor}} $</small>
+                              </div>
+                        </div>
+                        <div class="row p-3">
+                            <div class="col-6"><span class="h6 fw-bold">Altura: </span>{{player.altura}}</div>
+                        </div>
+                        <div class="row p-3">
+                            <div class="col-6"><span class="h6 fw-bold">Equipo: </span>{{player.team}}</div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row p-3">
+                            
+                         
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <table class="styled-table">
+       
+            <tbody>
+                <tr>
+                    <td>Partits</td>
+                    <td>{{player.matches}}</td>
+                </tr>
+                <tr>
+                    <td>Titular</td>
+                    <td>{{player.started}}</td>
+                </tr>
+                <tr>
+                    <td>Minuts/Partit</td>
+                    <td>{{player.min_per_game}}</td>
+                </tr>
+                <tr>
+                    <td>Gols</td>
+                    <td>{{player.goals}}</td>
+                </tr>
+                <tr>
+                    <td>xG</td>
+                    <td>{{player.exp_goals}}</td>
+                </tr>
+                <tr>
+                    <td>Gols de penal</td>
+                    <td>{{player.penalty_goals}}</td>
+                </tr>
+                <tr>
+                    <td>Encert penals</td>
+                    <td>{{player.penalty_conversion}}</td>
+                </tr>
+                <tr>
+                    <td>Minuts/gols</td>
+                    <td>{{player.score_freq}}</td>
+                </tr>
+                <tr>
+                    <td>Gols/partit</td>
+                    <td>{{player.goals_per_game}}</td>
+                </tr>
+                <tr>
+                    <td>Xuts/partit</td>
+                    <td>{{player.shots_per_game}}</td>
+                </tr>
+                <tr>
+                    <td>Tocs/partit</td>
+                    <td>{{player.touches_per_game}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+</div>
+
+        {% endblock %}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro
+    </title>
+</head>
+<body>
+     <h1>Registrar Equips</h1>
+    <form method="POST" id="Teams">
+        {% csrf_token %}
+     
+       <button type="submit" name="form_type" value="Teams">Equips</button>
+    </form>
+    
+
+    <h1>Registrar  Jugadors</h1>
+    <form method="POST" id="Players">
+        {% csrf_token %}
+       
+        <button type="submit" name="form_type" value="Players">Jugadors</button>
+    
+    </form>
+   
+    <h1>Borrar</h1>
+    <form method="POST" id="Borrar">
+        {% csrf_token %}
+       
+        <button type="submit" name="form_type" value="Borrar">Borrar</button>
+    
+    </form>
+</body>
+</html>
+
+
